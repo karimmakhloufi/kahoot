@@ -53,8 +53,8 @@ export default function Lobby({
               width: 400,
             }}
           />
-          <a href={`https://kahoot.wilders.dev/game/${gameId}`} />
         </div>
+        <a href={`https://kahoot.wilders.dev/game/${gameId}`} />
       </div>
     </div>
   );
