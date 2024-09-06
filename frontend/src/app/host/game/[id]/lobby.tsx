@@ -55,6 +55,7 @@ export default function Lobby({
           />
           <a
             href={`https://kahoot.wilders.dev/game/${gameId}`}
+            style={{ color: "white" }}
           >{`https://kahoot.wilders.dev/game/${gameId}`}</a>
         </div>
       </div>
