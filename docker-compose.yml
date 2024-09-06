@@ -12,7 +12,7 @@ services:
         ]
       timeout: 5s
       interval: 5s
-      retries: 3
+      retries: 100
     depends_on:
       analytics:
         condition: service_healthy
@@ -85,7 +85,7 @@ services:
         ]
       timeout: 5s
       interval: 5s
-      retries: 3
+      retries: 100
     environment:
       GOTRUE_API_HOST: 0.0.0.0
       GOTRUE_API_PORT: 9999
@@ -177,7 +177,7 @@ services:
         ]
       timeout: 5s
       interval: 5s
-      retries: 3
+      retries: 100
     environment:
       PORT: 4000
       DB_HOST: ${POSTGRES_HOST}
@@ -219,7 +219,7 @@ services:
         ]
       timeout: 5s
       interval: 5s
-      retries: 3
+      retries: 100
     environment:
       ANON_KEY: ${ANON_KEY}
       SERVICE_KEY: ${SERVICE_ROLE_KEY}
@@ -245,7 +245,7 @@ services:
       test: ["CMD", "imgproxy", "health"]
       timeout: 5s
       interval: 5s
-      retries: 3
+      retries: 100
     environment:
       IMGPROXY_BIND: ":5001"
       IMGPROXY_LOCAL_FILESYSTEM_ROOT: /
@@ -299,7 +299,7 @@ services:
       test: ["CMD", "curl", "http://localhost:4000/health"]
       timeout: 5s
       interval: 5s
-      retries: 10
+      retries: 100
     depends_on:
       db:
         # Disable this if you are using an external Postgres database
@@ -341,7 +341,7 @@ services:
       test: pg_isready -U postgres -h localhost
       interval: 5s
       timeout: 5s
-      retries: 10
+      retries: 100
     depends_on:
       vector:
         condition: service_healthy
@@ -396,7 +396,7 @@ services:
         ]
       timeout: 5s
       interval: 5s
-      retries: 3
+      retries: 100
     volumes:
       - ./volumes/logs/vector.yml:/etc/vector/vector.yml:ro
       - ${DOCKER_SOCKET_LOCATION}:/var/run/docker.sock:ro
