@@ -1,24 +1,24 @@
-import { Participant, supabase } from '@/types/types'
-import { useQRCode } from 'next-qrcode'
+import { Participant, supabase } from "@/types/types";
+import { useQRCode } from "next-qrcode";
 
 export default function Lobby({
   participants: participants,
   gameId,
 }: {
-  participants: Participant[]
-  gameId: string
+  participants: Participant[];
+  gameId: string;
 }) {
-  const { Canvas } = useQRCode()
+  const { Canvas } = useQRCode();
 
   const onClickStartGame = async () => {
     const { data, error } = await supabase
-      .from('games')
-      .update({ phase: 'quiz' })
-      .eq('id', gameId)
+      .from("games")
+      .update({ phase: "quiz" })
+      .eq("id", gameId);
     if (error) {
-      return alert(error.message)
+      return alert(error.message);
     }
-  }
+  };
 
   return (
     <div className="flex justify-center items-center min-h-screen">
@@ -45,16 +45,17 @@ export default function Lobby({
         <div className="pl-4">
           {/* <img src="/qr.png" alt="QR code" /> */}
           <Canvas
-            text={`https://kahoot-alternative.vercel.app/game/${gameId}`}
+            text={`https://kahoot.wilders.dev/game/${gameId}`}
             options={{
-              errorCorrectionLevel: 'M',
+              errorCorrectionLevel: "M",
               margin: 3,
               scale: 4,
               width: 400,
             }}
           />
+          <a href={`https://kahoot.wilders.dev/game/${gameId}`} />
         </div>
       </div>
     </div>
-  )
+  );
 }
