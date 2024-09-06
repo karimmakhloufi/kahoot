@@ -48,7 +48,7 @@ export default function Lobby({
     };
 
     fetchParticipant();
-  }, [gameId, onRegisterCompleted]);
+  }, []);
 
   return (
     <div className="bg-green-500 flex justify-center items-center min-h-screen">
